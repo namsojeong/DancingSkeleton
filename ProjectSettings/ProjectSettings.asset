@@ -735,13 +735,13 @@ PlayerSettings:
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
-    Analytics: 0
+    Analytics: 1
     Build: 0
     Collab: 0
     Game Performance: 0
     Purchasing: 0
     UDP: 0
-    Unity Ads: 0
+    Unity Ads: 1
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -758,7 +758,7 @@ PlayerSettings:
   cloudProjectId: 787bf65e-899e-4992-bd4e-006de8abff11
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: DanceWithSkeleton
+  projectName: DancingSkeleton
   organizationId: namsusu
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

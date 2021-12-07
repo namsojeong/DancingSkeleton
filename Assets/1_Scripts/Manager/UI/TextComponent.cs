@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class TextComponent : MonoBehaviour
 {
+    // 하트시스템 출력 스크립트
+
     [SerializeField]
     Text heartText;
     [SerializeField]

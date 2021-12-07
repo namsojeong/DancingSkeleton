@@ -60,18 +60,20 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         isChoice = false;
-
         
     }
 
     private void Update()
     {
+        //뒤로가기로 종료
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("종료");
-            Application.Quit();
+            UIManager.Instance.Setting();
         }
     }
+
+
     //저장
     private void LoadFromJson()
     {
@@ -142,6 +144,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //스테이지 이름 가져오기 + 저장
     public void SetCurrentStageName(string name)
     {
         stageName = name;
@@ -152,4 +155,6 @@ public class GameManager : MonoBehaviour
     {
         PlayerPrefs.SetString("stage name", stageName);
     }
+
+
 }

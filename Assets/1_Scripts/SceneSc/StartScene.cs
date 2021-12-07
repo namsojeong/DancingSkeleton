@@ -15,6 +15,8 @@ public class StartScene : MonoBehaviour
     {
         StartCoroutine(Ddoing());
     }
+
+    //≈¨∏Ø ¿Ã∆Â∆Æ
     IEnumerator Ddoing()
     {
         while (true)

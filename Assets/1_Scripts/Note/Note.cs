@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Note : MonoBehaviour
 {
@@ -14,11 +15,14 @@ public class Note : MonoBehaviour
 
     private bool canHit = false; //노트를 누를 타이밍인가?
 
-
+    
 
     //(중요) 핑크인가? ANG~
     [SerializeField]
     private bool isPink = false;
+
+
+    
 
     private void OnEnable() //노트가 활성화 될 때 마다 노트 정보를 한번 더 초기화하고 노트 기능 수행
     {
@@ -34,7 +38,6 @@ public class Note : MonoBehaviour
         if (!canHit)
         {
             //빨리 누를시 점수 깎이는거
-            Debug.Log("Bad!");
             NoteRecord.Instance.Click("Bad!");
             //NoteRecord.Instance.PlayHeartAnim();
             MissNote();
@@ -45,7 +48,8 @@ public class Note : MonoBehaviour
         if (canHit)
         {
             //히트 타임과 액티브타임의 시간 비교로 점수 들어오는 코드
-            Debug.Log("Correct!");
+            if (isPink)
+                NoteRecord.Instance.HpUpSystem();
             NoteRecord.Instance.Click("Correct!");
             if (isPink)
             {
@@ -84,7 +88,7 @@ public class Note : MonoBehaviour
 
     private void MissNote() //노트를 놓쳤을 때 실행되는 함수
     {
-        Debug.Log("Miss!");
+        NoteRecord.Instance.HpDownSystem();
         NoteRecord.Instance.Click("Miss!");
         ResetNote();
         ScoreManager.Instance.MissNote();

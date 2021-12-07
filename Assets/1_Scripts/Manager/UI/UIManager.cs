@@ -30,7 +30,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     GameObject musicPanel;
     [SerializeField]
-    private GameObject gameOverPanel = null;
+    GameObject gameOverPanel = null;
+    [SerializeField]
+    GameObject setting;
 
 
     bool isSetting = false;
@@ -48,23 +50,22 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-
         CreatePanels();
     }
 
+    //게임오버 시 스코어 출력
     public void GameOverScore()
     {
         songName.text = GameManager.Instance.stageName;
         UpdateScoreText();
     }
-
     void UpdateScoreText()
     {
         score.text = string.Format("Score : {0}", score);
     }
 
-
-    public void Setting(GameObject setting)
+    //세팅 열고 닫기
+    public void Setting()
     {
         isSetting = isSetting ? false : true;
         setting.SetActive(isSetting);
@@ -79,6 +80,7 @@ public class UIManager : MonoBehaviour
         obj.SetActive(false);
     }
 
+    //곡 패널 만들기
     public void CreatePanels()
     {
         GameObject panel = null;
@@ -95,6 +97,7 @@ public class UIManager : MonoBehaviour
 
     }
 
+    //종료
     public void Quit()
     {
         Application.Quit();

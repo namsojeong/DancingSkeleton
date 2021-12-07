@@ -26,6 +26,10 @@ public class NoteRecord : MonoBehaviour
     }
 
     [SerializeField]
+    Slider hpSlider; //체력바
+    float hp = 100;
+
+    [SerializeField]
     private float absTime = 0; //녹화 시작 후 절대시간
 
     [SerializeField]
@@ -254,4 +258,18 @@ public class NoteRecord : MonoBehaviour
     {
         heart.GetComponent<Animator>().Play("Heart", -1, 0f);
     }
+
+    //HP 줄었다 늘었다
+    public void HpDownSystem()
+    {
+        hp -= 10;
+        hpSlider.value = hp / 100;
+    }
+    public void HpUpSystem()
+    {
+        hp += 5;
+        hpSlider.value = hp / 100;
+    }
+
+
 }

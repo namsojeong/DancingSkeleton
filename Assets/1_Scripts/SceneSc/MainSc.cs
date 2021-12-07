@@ -14,7 +14,9 @@ public class MainSc : MonoBehaviour
 
     private void Awake()
     {
+        //처음 선택 안되어 있으니까 락 걸기
         rock.SetActive(true);
+
         //게임 플레이 버튼 클릭 시
         playButton.onClick.AddListener(() =>
         {
@@ -30,6 +32,7 @@ public class MainSc : MonoBehaviour
     }
     private void Update()
     {
+        //선택 확인하기
         if(GameManager.Instance.isChoice)
         {
             rock.SetActive(false);

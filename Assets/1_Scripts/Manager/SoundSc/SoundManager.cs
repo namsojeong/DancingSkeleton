@@ -28,19 +28,23 @@ public class SoundManager : MonoBehaviour
     AudioSource bgmSource;
 
     public float volume=1;
+
     private void Awake()
     {
         GetVolume();
     }
+
+    //sfx 사운드 출력하기
     public void OnClickSound(AudioClip clip)
     {
         sfxSource.clip = clip;
         sfxSource.Play();
     }
+
+    //볼륨 슬라이더 볼륨으로 가져오기
     public void GetVolume()
     {
         volume = PlayerPrefs.GetFloat("backvol", 1f);
-        Debug.Log(volume);
         bgmSource.volume = volume;
         sfxSource.volume = volume;
     }

@@ -21,6 +21,7 @@ public class SetVolume : MonoBehaviour
         SoundSlider();
     }
 
+    //세팅 사운드 조절 
     private void SoundSlider()
     {
         bgm.volume = backVolume.value;

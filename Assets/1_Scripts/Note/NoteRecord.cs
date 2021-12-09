@@ -58,8 +58,7 @@ public class NoteRecord : MonoBehaviour
     //심장
     public GameObject heart = null;
 
-    [SerializeField]
-    Text wowText;
+    
 
     string SAVE_PATH = "";
     readonly string SAVE_NAME = " Stage.txt";
@@ -146,13 +145,7 @@ public class NoteRecord : MonoBehaviour
 
 
 
-    //클릭 텍스트 효과
-    public void Click(string str)
-    {
-        wowText.DOFade(1f, 0f);
-        wowText.text = string.Format(str);
-        wowText.DOFade(0f, 0.7f);
-    }
+    
 
     private void RecordNoteInfo(string type) //노트 정보 기록
     {

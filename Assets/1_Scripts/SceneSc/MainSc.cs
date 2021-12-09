@@ -11,6 +11,25 @@ public class MainSc : MonoBehaviour
     Button playButton;
     [SerializeField]
     GameObject rock;
+    [SerializeField]
+    Text score;
+    [SerializeField]
+    Text songName;
+    [SerializeField]
+    GameObject musicPanel;
+    [SerializeField]
+    GameObject gameOverPanel = null;
+
+    private List<MusicPanel> musicList = new List<MusicPanel>();
+
+    private void OnEnable()
+    {
+        if (PlayerPrefs.GetInt("GameOver", -1) != -1)
+        {
+            gameOverPanel.SetActive(true);
+            GameOverManager.Instance.SetGameOverUI();
+        }
+    }
 
     private void Awake()
     {
@@ -30,6 +49,11 @@ public class MainSc : MonoBehaviour
         });
 
     }
+    private void Start()
+    {
+        CreatePanels();
+    }
+
     private void Update()
     {
         //선택 확인하기
@@ -40,4 +64,33 @@ public class MainSc : MonoBehaviour
         else
             rock.SetActive(true);
     }
+
+    //게임오버 시 스코어 출력
+    public void GameOverScore()
+    {
+        songName.text = GameManager.Instance.stageName;
+        UpdateScoreText();
+    }
+    void UpdateScoreText()
+    {
+        score.text = string.Format("Score : {0}", score);
+    }
+
+    //곡 패널 만들기
+    public void CreatePanels()
+    {
+        GameObject panel = null;
+        MusicPanel panelComponent = null;
+
+        foreach (MusicData music in GameManager.Instance.musicList)
+        {
+            panel = Instantiate(musicPanel.gameObject, musicPanel.transform.parent);
+            panelComponent = panel.GetComponent<MusicPanel>();
+            panelComponent.SetValue(music);
+            panel.SetActive(true);
+            musicList.Add(panelComponent);
+        }
+
+    }
+
 }

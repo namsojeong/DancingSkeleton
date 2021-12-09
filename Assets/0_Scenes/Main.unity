@@ -3129,6 +3129,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playButton: {fileID: 678156552}
   rock: {fileID: 612347291}
+  score: {fileID: 2115139137}
+  songName: {fileID: 1551554261}
+  musicPanel: {fileID: 870732789}
+  gameOverPanel: {fileID: 1605397821}
 --- !u!4 &1775234301
 Transform:
   m_ObjectHideFlags: 0
@@ -3684,11 +3688,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6062145b30698464195af1d0735179be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: {fileID: 2115139137}
-  songName: {fileID: 1551554261}
-  musicPanel: {fileID: 870732789}
-  gameOverPanel: {fileID: 1605397821}
   setting: {fileID: 2115318750}
+  wowText: {fileID: 0}
 --- !u!4 &2092365620
 Transform:
   m_ObjectHideFlags: 0

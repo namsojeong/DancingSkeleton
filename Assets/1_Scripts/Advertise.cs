@@ -22,6 +22,8 @@ public class Advertise : MonoBehaviour
         }
 
     }
+
+    //전면광고
     public void ShowAd()
     {
         if (Advertisement.IsReady())
@@ -30,17 +32,21 @@ public class Advertise : MonoBehaviour
         }
     }
 
-    [System.Obsolete]
+    //reward광고
     public void ShowRewardAd()
     {
+        if(GameManager.Instance.CurrentUser.heart>=15)
+        {
+            return;
+        }
         if (Advertisement.IsReady())
         {
             ShowOptions options = new ShowOptions { resultCallback = ResultAds };
-            Advertisement.Show("rewardedVideo", options);
+            Advertisement.Show("Rewarded_Android", options);
         }
         else
         {
-                Debug.Log("광고 보기를 완료했습니다.");
+                Debug.Log("광고를 시작하지 못했습니다.");
         }
     }
 

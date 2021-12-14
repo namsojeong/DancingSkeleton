@@ -1278,6 +1278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   setting: {fileID: 531923045}
   wowText: {fileID: 501967920}
+  isSetting: 0
 --- !u!1 &823325467
 GameObject:
   m_ObjectHideFlags: 0

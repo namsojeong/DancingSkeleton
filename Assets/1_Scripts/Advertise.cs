@@ -6,16 +6,42 @@ using UnityEngine.Advertisements;
 
 public class Advertise : MonoBehaviour
 {
+    void Start()
+    {
+        string gameId = null;
 
+#if UNITY_ANDROID
+        gameId = "4504024";
+#elif UNITY_IOS
+             gameId = 4504025;
+#endif
+
+        if (Advertisement.isSupported && !Advertisement.isInitialized)
+        {
+            Advertisement.Initialize(gameId);
+        }
+
+    }
     public void ShowAd()
     {
+        if (Advertisement.IsReady())
+        {
+            Advertisement.Show("video");
+        }
+    }
 
-        if (Advertisement.IsReady("rewardedVideo"))
+    [System.Obsolete]
+    public void ShowRewardAd()
+    {
+        if (Advertisement.IsReady())
         {
             ShowOptions options = new ShowOptions { resultCallback = ResultAds };
             Advertisement.Show("rewardedVideo", options);
         }
-
+        else
+        {
+                Debug.Log("광고 보기를 완료했습니다.");
+        }
     }
 
     void ResultAds(ShowResult result)
@@ -23,16 +49,19 @@ public class Advertise : MonoBehaviour
         switch (result)
         {
             case ShowResult.Failed:
-                Debug.LogError("The ad failed to be shown");
+                Debug.Log("광고 보기에 실패했습니다.");
                 break;
             case ShowResult.Skipped:
-                Debug.LogError("The ad was skipped before reaching the end");
+                Debug.Log("광고를 스킵했습니다.");
                 break;
             case ShowResult.Finished:
+                // 광고 보기 보상 기능 
                 GameManager.Instance.CurrentUser.heart++;
-                Debug.LogError("The ad was successfully shown");
-                break;
 
+                Debug.Log("광고 보기를 완료했습니다.");
+                break;
         }
     }
+
+
 }

@@ -187,9 +187,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ringAnimator: {fileID: 2136595304751412972}
-  activeTime: 1
+  activeTime: 0.75
+  currentActiveTime: 0.8
   hitTime: 0.4
-  hpSlider: {fileID: 0}
   isPink: 0
 --- !u!114 &7913717835800513711
 MonoBehaviour:

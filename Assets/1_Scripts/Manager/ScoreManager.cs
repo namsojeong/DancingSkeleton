@@ -55,6 +55,15 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    public void ReduceMiss()
+    {
+        miss--;
+        if (miss < 0)
+        {
+            miss = 0;
+        }
+    }
+
     private void UpdateUI()
     {
         if (score > highScore)

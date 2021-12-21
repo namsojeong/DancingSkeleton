@@ -143,16 +143,12 @@ public class NoteRecord : MonoBehaviour
         PoolManager.Instance.MakeObject(type, pos);
     }
 
-
-
-    
-
     private void RecordNoteInfo(string type) //노트 정보 기록
     {
         stageNoteData.notePos[index] = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         stageNoteData.notePos[index].x = Mathf.Clamp(stageNoteData.notePos[index].x, -7f, 1f);
         stageNoteData.notePos[index].y = Mathf.Clamp(stageNoteData.notePos[index].y, -4.2f, 0.8f);
-        //stageNoteData.noteTime[index] = absTime;
+        stageNoteData.noteTime[index] = absTime;
         stageNoteData.noteType[index] = type;
         index++;
     }
@@ -228,7 +224,7 @@ public class NoteRecord : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         stageMusic.Play();
-        skeleton.Play("Skeleton");
+        StartCoroutine(PlaySkeletonDance());
         skeleton.speed = 1;
         StartCoroutine(CheckMusicEnd());
     }
@@ -252,6 +248,20 @@ public class NoteRecord : MonoBehaviour
         heart.GetComponent<Animator>().Play("Heart", -1, 0f);
     }
 
+    private IEnumerator PlaySkeletonDance()
+    {
+        while (true)
+        {
+            skeleton.Play(stageNoteData.danceName);
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    public void OnSkeletonMiss()
+    {
+        skeleton.Play("Skeleton Miss",-1,0f);
+    }
+
     //HP 줄었다 늘었다
     public void HpDownSystem()
     {
@@ -261,8 +271,7 @@ public class NoteRecord : MonoBehaviour
     public void HpUpSystem()
     {
         hp += 5;
+        if (hp > 100) hp = 100;
         hpSlider.value = hp / 100;
     }
-
-
 }
